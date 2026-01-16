@@ -40,7 +40,7 @@ export default function Home() {
         { title: "v0", description: "Build applications with AI", icon: <Sparkles className="w-4 h-4 text-gray-600" /> },
         { title: "AI SDK", description: "The AI Toolkit for TypeScript", icon: <Layout className="w-4 h-4 text-gray-600" /> },
         { title: "AI Gateway", description: "One endpoint, all your models", icon: <Cpu className="w-4 h-4 text-gray-600" /> },
-        { title: "Vercel Agent", description: "An agent that knows your stack", icon: <Rocket className="w-4 h-4 text-gray-600" /> },
+        { title: "Broadsage Agent", description: "An agent that knows your stack", icon: <Rocket className="w-4 h-4 text-gray-600" /> },
         { title: "Sandbox", description: "AI workflows in live environments", icon: <Globe className="w-4 h-4 text-gray-600" /> },
       ]
     },
@@ -68,7 +68,7 @@ export default function Home() {
     {
       label: "Documentation",
       items: [
-        { title: "Docs", description: "Learn how to use Launchpad.", icon: <Layout className="w-4 h-4 text-gray-600" /> },
+        { title: "Docs", description: "Learn how to use Launchpad.", icon: <Layout className="w-4 h-4 text-gray-600" />, href: "/docs" },
         { title: "Guides", description: "Step-by-step tutorials.", icon: <ArrowRight className="w-4 h-4 text-gray-600" /> },
         { title: "API Reference", description: "Full technical docs.", icon: <Cpu className="w-4 h-4 text-gray-600" /> },
       ]
@@ -112,8 +112,8 @@ export default function Home() {
 
   const navLinks = [
     { label: "Products", groups: productGroups, maxWidth: "max-w-[760px]", align: "left" as const },
-    { label: "Solutions", groups: solutionGroups, maxWidth: "max-w-[520px]", columns: 2, align: "left" as const },
     { label: "Resources", groups: resourceGroups, maxWidth: "max-w-[760px]", align: "left" as const },
+    { label: "Solutions", groups: solutionGroups, maxWidth: "max-w-[520px]", columns: 2, align: "left" as const },
     { label: "Enterprise", href: "#" },
     { label: "Pricing", href: "#" },
   ];
@@ -124,7 +124,7 @@ export default function Home() {
         logo={
           <Link href="/" className="flex items-center gap-2 mr-2">
             <VercelTriangle className="w-6 h-6" />
-            <span className="text-xl font-bold tracking-tight">Vercel</span>
+            <span className="text-xl font-bold tracking-tight">Broadsage</span>
           </Link>
         }
         links={navLinks}
@@ -294,7 +294,7 @@ export default function Home() {
             <div className="space-y-6 max-w-xs">
               <Link href="/" className="flex items-center gap-2">
                 <VercelTriangle className="w-6 h-6" />
-                <span className="text-xl font-bold tracking-tight">Vercel</span>
+                <span className="text-xl font-bold tracking-tight">Broadsage</span>
               </Link>
               <p className="text-sm text-gray-500 leading-relaxed">
                 The high-performance monorepo boilerplate build for teams who ship at the speed of thought.
@@ -337,7 +337,7 @@ export default function Home() {
             </div>
           </div>
           <div className="mt-20 pt-8 border-t border-gray-100 flex flex-col sm:flex-row justify-between items-center gap-4 text-[10px] font-black uppercase tracking-[0.2em] text-gray-400">
-            <span>© 2026 Vercel Inc.</span>
+            <span>© 2026 Broadsage Inc.</span>
             <span className="flex items-center gap-4">
               <Link href="#" className="hover:text-black transition-colors">All Services Operational</Link>
               <div className="w-2 h-2 rounded-full bg-green-500" />
