@@ -13,3 +13,13 @@ export function VercelTriangle({ className }: { className?: string }) {
         </svg>
     );
 }
+
+export function BroadsageLogo({ className }: { className?: string }) {
+    return (
+        <img
+            src="/broadsage-dark.png"
+            alt="Broadsage Logo"
+            className={cn("w-auto h-8", className)}
+        />
+    );
+}

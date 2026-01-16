@@ -22,13 +22,12 @@ export default function Home() {
   return (
     <div className={styles.page}>
       <main className={styles.main}>
-        <ThemeImage
+        <Image
           className={styles.logo}
-          srcLight="turborepo-dark.svg"
-          srcDark="turborepo-light.svg"
-          alt="Turborepo logo"
+          src="/broadsage-dark.png"
+          alt="Broadsage Logo"
           width={180}
-          height={38}
+          height={60}
           priority
         />
         <ol>

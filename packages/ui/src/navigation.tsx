@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronDown } from "lucide-react";
 import Link from "next/link";
@@ -34,10 +34,24 @@ export interface NavigationProps {
 
 export function Navbar({ logo, links, rightContent }: NavigationProps) {
     const [activeMenu, setActiveMenu] = useState<string | null>(null);
+    const [isScrolled, setIsScrolled] = useState(false);
+
+    useEffect(() => {
+        const handleScroll = () => {
+            setIsScrolled(window.scrollY > 0);
+        };
+        window.addEventListener("scroll", handleScroll);
+        return () => window.removeEventListener("scroll", handleScroll);
+    }, []);
 
     return (
         <nav
-            className="fixed top-0 w-full z-50 bg-white border-b border-gray-100"
+            className={cn(
+                "fixed top-0 w-full z-50 transition-all duration-300",
+                isScrolled
+                    ? "bg-white/80 backdrop-blur-md border-b border-gray-100 py-0"
+                    : "bg-transparent border-b border-transparent py-2"
+            )}
             onMouseLeave={() => setActiveMenu(null)}
         >
             <Container size="xl" className="flex items-center justify-between h-16 relative">
@@ -85,7 +99,8 @@ export function Navbar({ logo, links, rightContent }: NavigationProps) {
                             exit={{ opacity: 0, scale: 0.98, y: -4 }}
                             transition={{ duration: 0.1, ease: "easeOut" }}
                             className={cn(
-                                "absolute top-[48px] bg-white border border-gray-100 rounded-xl shadow-[0_20px_40px_rgba(0,0,0,0.1)] p-4 z-[60]",
+                                "absolute bg-white border border-gray-100 rounded-xl shadow-[0_20px_40px_rgba(0,0,0,0.1)] p-4 z-[60]",
+                                isScrolled ? "top-[56px]" : "top-[64px]",
                                 links.find(l => l.label === activeMenu)?.maxWidth || "w-full max-w-[760px]",
                                 links.find(l => l.label === activeMenu)?.align === "center" ? "left-1/2 -translate-x-1/2" :
                                     links.find(l => l.label === activeMenu)?.align === "right" ? "right-0" : "left-0"
@@ -113,7 +128,7 @@ export function Navbar({ logo, links, rightContent }: NavigationProps) {
                                                         </div>
                                                     )}
                                                     <div className="min-w-0">
-                                                        <div className="text-[13px] font-semibold text-black leading-tight group-hover:text-blue-600 transition-colors">{item.title}</div>
+                                                        <div className="text-[13px] font-semibold text-black leading-tight group-hover:text-[#5E17EB] transition-colors">{item.title}</div>
                                                         {item.description && (
                                                             <div className="text-[11px] text-gray-500 mt-0.5 line-clamp-1 opacity-80">{item.description}</div>
                                                         )}

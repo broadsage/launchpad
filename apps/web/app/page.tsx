@@ -6,7 +6,7 @@ import Link from "next/link";
 import { PremiumButton } from "@repo/ui/premium-button";
 import { Container, Section } from "@repo/ui/layout";
 import { Navbar, NavGroup } from "@repo/ui/navigation";
-import { VercelTriangle } from "@repo/ui/icons";
+import { BroadsageLogo } from "@repo/ui/icons";
 import { FeatureCard } from "@repo/ui/feature-card";
 import { cn } from "@repo/ui/utils";
 
@@ -122,9 +122,9 @@ export default function Home() {
     <div className="min-h-screen bg-white selection:bg-black selection:text-white">
       <Navbar
         logo={
-          <Link href="/" className="flex items-center gap-2 mr-2">
-            <VercelTriangle className="w-6 h-6" />
-            <span className="text-xl font-bold tracking-tight">Broadsage</span>
+          <Link href="/" className="flex items-center gap-3 mr-2">
+            <BroadsageLogo className="h-10" />
+            <span className="text-2xl font-bold tracking-tight text-[#0A0A0A]">Broadsage</span>
           </Link>
         }
         links={navLinks}
@@ -158,7 +158,7 @@ export default function Home() {
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-blue-600"></span>
               </span>
-              Now v5.0 is live
+              BROADSAGE STACK v5.0
             </motion.div>
 
             <motion.h1
@@ -233,8 +233,8 @@ export default function Home() {
         <Container>
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div>
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-black text-[10px] font-bold text-white uppercase tracking-wider mb-6">
-                Developer First
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-black text-[10px] font-bold text-white uppercase tracking-[0.2em] mb-6">
+                BROADSAGE CORE
               </div>
               <h2 className="text-4xl md:text-5xl font-black tracking-tighter mb-6">
                 Develop locally, <br />
@@ -287,61 +287,126 @@ export default function Home() {
         </Container>
       </Section>
 
-      {/* Footer */}
-      <footer className="py-20 border-t border-gray-100 bg-white">
+      {/* Footer - GitHub Style */}
+      <footer className="border-t border-gray-200 bg-gray-50">
         <Container size="xl">
-          <div className="flex flex-col md:flex-row justify-between items-start gap-12">
-            <div className="space-y-6 max-w-xs">
-              <Link href="/" className="flex items-center gap-2">
-                <VercelTriangle className="w-6 h-6" />
-                <span className="text-xl font-bold tracking-tight">Broadsage</span>
-              </Link>
-              <p className="text-sm text-gray-500 leading-relaxed">
-                The high-performance monorepo boilerplate build for teams who ship at the speed of thought.
-              </p>
-              <div className="flex gap-4">
-                <Link href="#" className="p-2 border border-gray-100 rounded-full hover:bg-gray-50 transition-colors">
-                  <Github className="w-4 h-4 text-gray-600" />
-                </Link>
-                <Link href="#" className="p-2 border border-gray-100 rounded-full hover:bg-gray-50 transition-colors">
-                  <Globe className="w-4 h-4 text-gray-600" />
-                </Link>
+          {/* Main Footer Content */}
+          <div className="py-16">
+            <div className="grid grid-cols-2 md:grid-cols-6 gap-8">
+              {/* Column 1: Platform */}
+              <div className="space-y-4">
+                <h3 className="text-xs font-semibold text-gray-900 uppercase tracking-wider">Platform</h3>
+                <ul className="space-y-3">
+                  <li><Link href="#" className="text-sm text-gray-600 hover:text-[#5E17EB] transition-colors">Features</Link></li>
+                  <li><Link href="#" className="text-sm text-gray-600 hover:text-[#5E17EB] transition-colors">Security</Link></li>
+                  <li><Link href="#" className="text-sm text-gray-600 hover:text-[#5E17EB] transition-colors">Enterprise</Link></li>
+                  <li><Link href="#" className="text-sm text-gray-600 hover:text-[#5E17EB] transition-colors">Pricing</Link></li>
+                  <li><Link href="#" className="text-sm text-gray-600 hover:text-[#5E17EB] transition-colors">Roadmap</Link></li>
+                </ul>
               </div>
-            </div>
 
-            <div className="grid grid-cols-2 sm:grid-cols-3 gap-12 text-sm">
+              {/* Column 2: Product */}
               <div className="space-y-4">
-                <h4 className="font-bold">Product</h4>
-                <ul className="space-y-3 text-gray-500">
-                  <li><Link href="#" className="hover:text-black transition-colors">Infrastructure</Link></li>
-                  <li><Link href="#" className="hover:text-black transition-colors">Analytics</Link></li>
-                  <li><Link href="#" className="hover:text-black transition-colors">Previews</Link></li>
+                <h3 className="text-xs font-semibold text-gray-900 uppercase tracking-wider">Product</h3>
+                <ul className="space-y-3">
+                  <li><Link href="#" className="text-sm text-gray-600 hover:text-[#5E17EB] transition-colors">Infrastructure</Link></li>
+                  <li><Link href="#" className="text-sm text-gray-600 hover:text-[#5E17EB] transition-colors">CI/CD</Link></li>
+                  <li><Link href="#" className="text-sm text-gray-600 hover:text-[#5E17EB] transition-colors">Analytics</Link></li>
+                  <li><Link href="#" className="text-sm text-gray-600 hover:text-[#5E17EB] transition-colors">Previews</Link></li>
+                  <li><Link href="#" className="text-sm text-gray-600 hover:text-[#5E17EB] transition-colors">Monitoring</Link></li>
                 </ul>
               </div>
+
+              {/* Column 3: Support */}
               <div className="space-y-4">
-                <h4 className="font-bold">Company</h4>
-                <ul className="space-y-3 text-gray-500">
-                  <li><Link href="#" className="hover:text-black transition-colors">About</Link></li>
-                  <li><Link href="#" className="hover:text-black transition-colors">Careers</Link></li>
-                  <li><Link href="#" className="hover:text-black transition-colors">Privacy</Link></li>
+                <h3 className="text-xs font-semibold text-gray-900 uppercase tracking-wider">Support</h3>
+                <ul className="space-y-3">
+                  <li><Link href="#" className="text-sm text-gray-600 hover:text-[#5E17EB] transition-colors">Docs</Link></li>
+                  <li><Link href="#" className="text-sm text-gray-600 hover:text-[#5E17EB] transition-colors">Community</Link></li>
+                  <li><Link href="#" className="text-sm text-gray-600 hover:text-[#5E17EB] transition-colors">Contact</Link></li>
+                  <li><Link href="#" className="text-sm text-gray-600 hover:text-[#5E17EB] transition-colors">Status</Link></li>
+                  <li><Link href="#" className="text-sm text-gray-600 hover:text-[#5E17EB] transition-colors">API</Link></li>
                 </ul>
               </div>
+
+              {/* Column 4: Company */}
               <div className="space-y-4">
-                <h4 className="font-bold">Resources</h4>
-                <ul className="space-y-3 text-gray-500">
-                  <li><Link href="#" className="hover:text-black transition-colors">Docs</Link></li>
-                  <li><Link href="#" className="hover:text-black transition-colors">Blog</Link></li>
-                  <li><Link href="#" className="hover:text-black transition-colors">Community</Link></li>
+                <h3 className="text-xs font-semibold text-gray-900 uppercase tracking-wider">Company</h3>
+                <ul className="space-y-3">
+                  <li><Link href="#" className="text-sm text-gray-600 hover:text-[#5E17EB] transition-colors">About</Link></li>
+                  <li><Link href="#" className="text-sm text-gray-600 hover:text-[#5E17EB] transition-colors">Blog</Link></li>
+                  <li><Link href="#" className="text-sm text-gray-600 hover:text-[#5E17EB] transition-colors">Careers</Link></li>
+                  <li><Link href="#" className="text-sm text-gray-600 hover:text-[#5E17EB] transition-colors">Press</Link></li>
+                  <li><Link href="#" className="text-sm text-gray-600 hover:text-[#5E17EB] transition-colors">Partners</Link></li>
                 </ul>
+              </div>
+
+              {/* Column 5: Resources */}
+              <div className="space-y-4">
+                <h3 className="text-xs font-semibold text-gray-900 uppercase tracking-wider">Resources</h3>
+                <ul className="space-y-3">
+                  <li><Link href="#" className="text-sm text-gray-600 hover:text-[#5E17EB] transition-colors">Guides</Link></li>
+                  <li><Link href="#" className="text-sm text-gray-600 hover:text-[#5E17EB] transition-colors">Templates</Link></li>
+                  <li><Link href="#" className="text-sm text-gray-600 hover:text-[#5E17EB] transition-colors">Changelog</Link></li>
+                  <li><Link href="#" className="text-sm text-gray-600 hover:text-[#5E17EB] transition-colors">Open Source</Link></li>
+                  <li><Link href="#" className="text-sm text-gray-600 hover:text-[#5E17EB] transition-colors">Education</Link></li>
+                </ul>
+              </div>
+
+              {/* Column 6: Newsletter */}
+              <div className="space-y-4 col-span-2 md:col-span-1">
+                <h3 className="text-xs font-semibold text-gray-900 uppercase tracking-wider">Subscribe</h3>
+                <p className="text-sm text-gray-600">Get the latest updates and news.</p>
+                <div className="flex flex-col gap-2">
+                  <input
+                    type="email"
+                    placeholder="Email address"
+                    className="px-3 py-2 text-sm border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                  />
+                  <button className="px-3 py-2 text-sm font-medium text-white bg-black rounded-md hover:bg-gray-800 transition-colors">
+                    Subscribe
+                  </button>
+                </div>
               </div>
             </div>
           </div>
-          <div className="mt-20 pt-8 border-t border-gray-100 flex flex-col sm:flex-row justify-between items-center gap-4 text-[10px] font-black uppercase tracking-[0.2em] text-gray-400">
-            <span>© 2026 Broadsage Inc.</span>
-            <span className="flex items-center gap-4">
-              <Link href="#" className="hover:text-black transition-colors">All Services Operational</Link>
-              <div className="w-2 h-2 rounded-full bg-green-500" />
-            </span>
+
+          {/* Bottom Bar */}
+          <div className="py-8 border-t border-gray-200">
+            <div className="flex flex-col md:flex-row justify-between items-center gap-4">
+              {/* Logo and Copyright */}
+              <div className="flex items-center gap-4">
+                <Link href="/" className="flex items-center gap-2">
+                  <BroadsageLogo className="h-8" />
+                  <span className="text-lg font-bold text-gray-900 uppercase">BROADSAGE</span>
+                </Link>
+                <span className="text-sm text-gray-500">© 2026 Broadsage, Inc.</span>
+              </div>
+
+              {/* Social Links */}
+              <div className="flex items-center gap-4">
+                <Link href="#" className="text-gray-500 hover:text-gray-900 transition-colors" aria-label="GitHub">
+                  <Github className="w-5 h-5" />
+                </Link>
+                <Link href="#" className="text-gray-500 hover:text-gray-900 transition-colors" aria-label="Twitter">
+                  <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" /></svg>
+                </Link>
+                <Link href="#" className="text-gray-500 hover:text-gray-900 transition-colors" aria-label="LinkedIn">
+                  <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" /></svg>
+                </Link>
+              </div>
+
+              {/* Legal Links */}
+              <div className="flex items-center gap-6 text-sm text-gray-500">
+                <Link href="#" className="hover:text-gray-900 transition-colors">Terms</Link>
+                <Link href="#" className="hover:text-gray-900 transition-colors">Privacy</Link>
+                <Link href="#" className="hover:text-gray-900 transition-colors">Security</Link>
+                <div className="flex items-center gap-2">
+                  <div className="w-2 h-2 rounded-full bg-green-500" />
+                  <Link href="#" className="hover:text-gray-900 transition-colors">Status</Link>
+                </div>
+              </div>
+            </div>
           </div>
         </Container>
       </footer>
