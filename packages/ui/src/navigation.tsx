@@ -49,8 +49,8 @@ export function Navbar({ logo, links, rightContent }: NavigationProps) {
             className={cn(
                 "fixed top-0 w-full z-50 transition-all duration-300",
                 isScrolled
-                    ? "bg-white/80 backdrop-blur-md border-b border-gray-100 py-0"
-                    : "bg-transparent border-b border-transparent py-2"
+                    ? "bg-white/95 backdrop-blur-md border-b border-gray-200 py-0"
+                    : "bg-white/90 backdrop-blur-sm border-b border-gray-100 py-2"
             )}
             onMouseLeave={() => setActiveMenu(null)}
         >

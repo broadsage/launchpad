@@ -1,4 +1,5 @@
 import React from "react";
+import Image from "next/image";
 import { cn } from "./utils";
 
 export function VercelTriangle({ className }: { className?: string }) {
@@ -16,10 +17,13 @@ export function VercelTriangle({ className }: { className?: string }) {
 
 export function BroadsageLogo({ className }: { className?: string }) {
     return (
-        <img
+        <Image
             src="/broadsage-dark.png"
             alt="Broadsage Logo"
-            className={cn("w-auto h-8", className)}
+            width={40}
+            height={40}
+            className={cn("w-auto", className)}
+            priority
         />
     );
 }
