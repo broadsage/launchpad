@@ -4,12 +4,7 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { Lightbulb, Mail, Rocket, Check } from "lucide-react";
 import Link from "next/link";
-import { Container } from "@repo/ui/layout";
-import { Navbar, NavGroup } from "@repo/ui/navigation";
-import { BroadsageLogo } from "@repo/ui/icons";
-import { PremiumButton } from "@repo/ui/premium-button";
-import { Footer } from "@repo/ui/footer";
-import { Header } from "@repo/ui/header";
+import { PageLayout } from "@repo/ui/page-layout";
 
 export default function NewsletterPage() {
     const [email, setEmail] = useState("");
@@ -30,13 +25,11 @@ export default function NewsletterPage() {
     };
 
     return (
-        <div className="min-h-screen bg-white">
-            <Header />
-
+        <PageLayout>
             {/* Main Content - Split Layout */}
-            <div className="pt-16 min-h-screen grid lg:grid-cols-2">
+            <div className="grid lg:grid-cols-2 min-h-[calc(100vh-64px)]">
                 {/* Left Column - Modern Hero Section */}
-                <div className="bg-gradient-to-br from-[#0A0A0A] via-[#1a1a2e] to-[#16213e] text-white relative overflow-hidden">
+                <div className="bg-gradient-to-br from-[#0D161C] via-[#1a1a2e] to-[#16213e] text-white relative">
                     {/* Animated Background Elements */}
                     <div className="absolute top-20 left-10 w-72 h-72 bg-blue-500/10 rounded-full blur-3xl animate-pulse" />
                     <div className="absolute bottom-20 right-10 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }} />
@@ -45,12 +38,11 @@ export default function NewsletterPage() {
                     {/* Grid Pattern Overlay */}
                     <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,.02)_1px,transparent_1px)] bg-[size:64px_64px] [mask-image:radial-gradient(ellipse_80%_50%_at_50%_50%,#000_70%,transparent_100%)]" />
 
-                    <div className="relative z-10 px-6 lg:px-16 py-16 lg:py-24 flex flex-col justify-center min-h-[600px] lg:min-h-screen">
+                    <div className="relative z-10 px-6 lg:px-16 py-16 lg:py-24 flex flex-col justify-center min-h-[600px]">
                         <motion.div
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.6 }}
-                            className="max-w-2xl"
                         >
                             {/* Badge */}
                             <motion.div
@@ -67,7 +59,7 @@ export default function NewsletterPage() {
                             </motion.div>
 
                             {/* Main Heading */}
-                            <h1 className="text-4xl sm:text-5xl lg:text-[3.5rem] xl:text-6xl font-black tracking-tight mb-6 bg-gradient-to-r from-white via-blue-100 to-purple-100 bg-clip-text text-transparent leading-tight">
+                            <h1 className="text-[1.15rem] sm:text-[2rem] md:text-[2.5rem] lg:text-[2rem] xl:text-[2.5rem] font-black tracking-tight mb-6 bg-gradient-to-r from-white via-blue-100 to-purple-100 bg-clip-text text-transparent leading-tight whitespace-nowrap">
                                 Stay ahead of the curve
                             </h1>
 
@@ -165,7 +157,7 @@ export default function NewsletterPage() {
 
                 {/* Right Column - White Form Section */}
                 <div className="bg-white">
-                    <div className="px-6 lg:px-12 py-16 lg:py-24 flex flex-col justify-center min-h-[600px] lg:min-h-screen">
+                    <div className="px-6 lg:px-12 py-16 lg:py-24 flex flex-col justify-center min-h-[600px]">
                         <motion.div
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
@@ -177,11 +169,11 @@ export default function NewsletterPage() {
                                     <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
                                         <Check className="w-8 h-8 text-green-600" />
                                     </div>
-                                    <h2 className="text-2xl font-bold text-gray-900 mb-3">You're subscribed!</h2>
+                                    <h2 className="text-2xl font-bold text-gray-900 mb-3">You&apos;re subscribed!</h2>
                                     <p className="text-gray-600 mb-8">
-                                        Thank you for subscribing to our developer newsletter. You'll receive your first email soon.
+                                        Thank you for subscribing to our developer newsletter. You&apos;ll receive your first email soon.
                                     </p>
-                                    <Link href="/" className="text-[#0969da] hover:underline font-medium">
+                                    <Link href="/" className="text-[#6226FA] hover:underline font-medium">
                                         Return to homepage
                                     </Link>
                                 </div>
@@ -203,7 +195,7 @@ export default function NewsletterPage() {
                                                 required
                                                 value={email}
                                                 onChange={(e) => setEmail(e.target.value)}
-                                                className="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm"
+                                                className="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#6226FA] focus:border-transparent text-sm"
                                                 placeholder="you@company.com"
                                             />
                                         </div>
@@ -218,7 +210,7 @@ export default function NewsletterPage() {
                                                 required
                                                 value={country}
                                                 onChange={(e) => setCountry(e.target.value)}
-                                                className="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm bg-white"
+                                                className="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#6226FA] focus:border-transparent text-sm bg-white"
                                             >
                                                 <option value="">Select your country</option>
                                                 <option value="US">United States</option>
@@ -243,11 +235,11 @@ export default function NewsletterPage() {
                                                 required
                                                 checked={agreed}
                                                 onChange={(e) => setAgreed(e.target.checked)}
-                                                className="mt-1 w-4 h-4 border-gray-300 rounded focus:ring-blue-500"
+                                                className="mt-1 w-4 h-4 border-gray-300 rounded focus:ring-[#6226FA]"
                                             />
                                             <label htmlFor="privacy" className="text-sm text-gray-700">
                                                 I agree to receive email communications from Broadsage and understand that I can unsubscribe at any time. For more information, please see our{" "}
-                                                <Link href="#" className="text-[#0969da] hover:underline">
+                                                <Link href="#" className="text-[#6226FA] hover:underline">
                                                     Privacy Statement
                                                 </Link>
                                                 .
@@ -258,7 +250,7 @@ export default function NewsletterPage() {
                                         <button
                                             type="submit"
                                             disabled={isSubmitting || !agreed}
-                                            className="w-full py-3 px-6 bg-[#1f2328] text-white font-semibold rounded-md hover:bg-[#2c3137] transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                                            className="w-full py-3 px-6 bg-[#0D161C] text-white font-semibold rounded-md hover:bg-[#1a2b38] transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                                         >
                                             {isSubmitting ? "Subscribing..." : "Subscribe"}
                                         </button>
@@ -269,8 +261,6 @@ export default function NewsletterPage() {
                     </div>
                 </div>
             </div>
-
-            <Footer />
-        </div>
+        </PageLayout>
     );
 }

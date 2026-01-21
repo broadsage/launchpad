@@ -1,6 +1,10 @@
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
 :root {
   --background: #ffffff;
-  --foreground: #171717;
+  --foreground: #0D161C;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -44,7 +48,64 @@ a {
   .imgLight {
     display: none;
   }
+
   .imgDark {
     display: unset;
   }
+}
+
+.bg-grid-pattern {
+  background-image:
+    linear-gradient(to right, #f3f4f6 1px, transparent 1px),
+    linear-gradient(to bottom, #f3f4f6 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+@media (prefers-color-scheme: dark) {
+  .bg-grid-pattern {
+    background-image:
+      linear-gradient(to right, #1f2937 1px, transparent 1px),
+      linear-gradient(to bottom, #1f2937 1px, transparent 1px);
+  }
+}
+
+.connector-line {
+  position: absolute;
+  background-color: #6226FA;
+  z-index: 0;
+}
+
+.connector-line-v {
+  width: 1px;
+  height: 100px;
+}
+
+.connector-line-h {
+  height: 1px;
+  width: 100px;
+}
+
+.pixel-border {
+  border: 1px solid #e5e7eb;
+  position: relative;
+}
+
+.pixel-border::before {
+  content: "";
+  position: absolute;
+  top: -4px;
+  left: -4px;
+  width: 8px;
+  height: 8px;
+  background: #0D161C;
+}
+
+.pixel-border::after {
+  content: "";
+  position: absolute;
+  bottom: -4px;
+  right: -4px;
+  width: 8px;
+  height: 8px;
+  background: #0D161C;
 }

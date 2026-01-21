@@ -3,26 +3,26 @@
 @tailwind utilities;
 
 :root {
-  --background: 0 0% 100%;
-  --foreground: 0 0% 0%;
+  --background: 0 0% 98%;
+  --foreground: 0 0% 9%;
   --card: 0 0% 100%;
-  --card-foreground: 0 0% 0%;
+  --card-foreground: 0 0% 9%;
   --popover: 0 0% 100%;
-  --popover-foreground: 0 0% 0%;
+  --popover-foreground: 0 0% 9%;
   --primary: 0 0% 0%;
   --primary-foreground: 0 0% 100%;
-  --secondary: 0 0% 96%;
-  --secondary-foreground: 0 0% 0%;
-  --muted: 0 0% 96%;
-  --muted-foreground: 0 0% 45%;
-  --accent: 0 0% 96%;
-  --accent-foreground: 0 0% 0%;
-  --destructive: 0 84% 60%;
-  --destructive-foreground: 0 0% 100%;
-  --border: 0 0% 90%;
-  --input: 0 0% 90%;
-  --ring: 0 0% 0%;
-  --radius: 0.5rem;
+  --secondary: 240 4.8% 95.9%;
+  --secondary-foreground: 240 5.9% 10%;
+  --muted: 240 4.8% 95.9%;
+  --muted-foreground: 240 3.8% 46.1%;
+  --accent: 240 4.8% 95.9%;
+  --accent-foreground: 240 5.9% 10%;
+  --destructive: 0 84.2% 60.2%;
+  --destructive-foreground: 0 0% 98%;
+  --border: 240 5.9% 90%;
+  --input: 240 5.9% 90%;
+  --ring: 240 5.9% 10%;
+  --radius: 0.75rem;
 }
 
 .dark {
@@ -66,11 +66,197 @@ body {
   }
 }
 
-.bg-dot-pattern {
-  background-image: radial-gradient(#e5e7eb 1px, transparent 1px);
-  background-size: 24px 24px;
+/* Custom Utilities and Components */
+.bg-grid-pattern {
+  background-image:
+    linear-gradient(to right, #f3f4f6 1px, transparent 1px),
+    linear-gradient(to bottom, #f3f4f6 1px, transparent 1px);
+  background-size: 40px 40px;
 }
 
-.dark .bg-dot-pattern {
-  background-image: radial-gradient(#222 1px, transparent 1px);
+.dark .bg-grid-pattern {
+  background-image:
+    linear-gradient(to right, #1f2937 1px, transparent 1px),
+    linear-gradient(to bottom, #1f2937 1px, transparent 1px);
+}
+
+.connector-line {
+  position: absolute;
+  background-color: #6226FA;
+  z-index: 0;
+}
+
+.connector-line-v {
+  width: 1px;
+  height: 100px;
+}
+
+.connector-line-h {
+  height: 1px;
+  width: 100px;
+}
+
+.pixel-border {
+  border: 1px solid #e5e7eb;
+  position: relative;
+}
+
+.pixel-border::before {
+  content: "";
+  position: absolute;
+  top: -4px;
+  left: -4px;
+  width: 8px;
+  height: 8px;
+  background: #0D161C;
+}
+
+.pixel-border::after {
+  content: "";
+  position: absolute;
+  bottom: -4px;
+  right: -4px;
+  width: 8px;
+  height: 8px;
+  background: #0D161C;
+}
+
+.glass-card {
+  @apply bg-white/70 backdrop-blur-xl border border-white/20;
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.07);
+}
+
+.glass-card-dark {
+  @apply bg-[#0D161C]/80 backdrop-blur-xl border border-white/5 shadow-2xl;
+}
+
+.glass-card-premium {
+  @apply bg-white/80 backdrop-blur-2xl border border-white;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.05);
+  position: relative;
+  overflow: hidden;
+}
+
+.glass-card-premium::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(125deg, rgba(255, 255, 255, 0.3) 0%, rgba(255, 255, 255, 0) 40%, rgba(255, 255, 255, 0) 60%, rgba(255, 255, 255, 0.1) 100%);
+  pointer-events: none;
+}
+
+.text-gradient-vibrant {
+  @apply bg-gradient-to-r from-[#6226FA] via-[#9B62FF] to-[#00C2FF] bg-clip-text text-transparent;
+}
+
+.vibrant-glow {
+  @apply absolute blur-[100px] opacity-30 pointer-events-none;
+}
+
+.blueprint-grid {
+  background-image:
+    linear-gradient(to right, rgba(0, 0, 0, 0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0, 0, 0, 0.03) 1px, transparent 1px);
+  background-size: 64px 64px;
+}
+
+.blueprint-node {
+  @apply w-2 h-2 bg-[#6226FA] relative;
+}
+
+.blueprint-line-h {
+  @apply h-[1px] bg-gray-200 flex-1;
+}
+
+.blueprint-line-v {
+  @apply w-[1px] bg-gray-200 flex-1;
+}
+
+/* Animations */
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-20px);
+  }
+
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+.animate-pulse-slow {
+  animation: pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+.animate-scan {
+  animation: scan 4s linear infinite;
+}
+
+@keyframes scan {
+  0% {
+    top: 0%;
+    opacity: 0;
+  }
+
+  10% {
+    opacity: 0.5;
+  }
+
+  90% {
+    opacity: 0.5;
+  }
+
+  100% {
+    top: 100%;
+    opacity: 0;
+  }
+}
+
+.animate-blink {
+  animation: blink 1s step-end infinite;
+}
+
+@keyframes blink {
+
+  from,
+  to {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0;
+  }
+}
+
+.animate-marquee {
+  animation: marquee 20s linear infinite;
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateY(0);
+  }
+
+  100% {
+    transform: translateY(-50%);
+  }
+}
+
+@keyframes pulse {
+
+  0%,
+  100% {
+    opacity: 0.3;
+  }
+
+  50% {
+    opacity: 0.15;
+  }
 }
