@@ -3,6 +3,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { ArrowRight, Briefcase, MessageSquare } from "lucide-react";
+import Link from "next/link";
 import { PageLayout } from "@repo/ui/page-layout";
 import { Container } from "@repo/ui/layout";
 import { PremiumButton } from "@repo/ui/premium-button";
@@ -49,12 +50,14 @@ export default function AboutPage() {
                                     Nice to meet you
                                 </h2>
                                 <p className="text-base md:text-[18px] text-[#0E1C2F]/70 mb-10 leading-relaxed font-medium">
-                                    Broadsage, formally <span className="text-[#6226FA] italic font-semibold">Broadsage Inc.</span>, is an open-source workshop creating some of the most powerful infrastructure security software available today. Chat with us to learn more!
+                                    Broadsage is an open-source powerhouse focused on the intersection of <span className="text-[#6226FA] font-semibold">Security, AI, and Software Development</span>. We specialize in building resilient Infrastructure as Code (IaC) solutions and AI-driven security tools that fortify the modern development lifecycle. Chat with us to learn more!
                                 </p>
                                 <div className="flex flex-col sm:flex-row flex-wrap gap-4">
-                                    <PremiumButton variant="purple" className="rounded-full px-8 h-12 bg-[#6226FA] hover:bg-[#7D4DFF] text-white font-bold text-sm shadow-lg shadow-purple-600/20 transition-all flex items-center justify-center gap-2 group/btn">
-                                        Contact the team <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
-                                    </PremiumButton>
+                                    <Link href="/contact">
+                                        <PremiumButton variant="purple" className="rounded-full px-8 h-12 bg-[#6226FA] hover:bg-[#7D4DFF] text-white font-bold text-sm shadow-lg shadow-purple-600/20 transition-all flex items-center justify-center gap-2 group/btn">
+                                            Contact the team <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
+                                        </PremiumButton>
+                                    </Link>
                                     <button className="rounded-full px-8 h-12 bg-white/60 backdrop-blur-md border border-purple-200 hover:border-purple-300 text-[#0E1C2F] font-bold text-sm shadow-sm hover:shadow-md transition-all flex items-center justify-center gap-2 group/btn2">
                                         Recent news <ArrowRight className="w-4 h-4 group-hover/btn2:translate-x-1 transition-transform opacity-60" />
                                     </button>
@@ -69,7 +72,7 @@ export default function AboutPage() {
                                     </div>
                                     <h3 className="text-xl font-bold text-[#0E1C2F] leading-tight tracking-tight">Careers</h3>
                                     <p className="text-sm text-[#0E1C2F]/60 leading-relaxed font-medium">
-                                        Interested in building a modern and innovative security project with meaningful, real-world usage? We&apos;re hiring!
+                                        Help us architect the future of AI-driven security and automated IaC. We&apos;re looking for engineers who want to build high-stakes, secure-by-default infrastructure.
                                     </p>
                                 </div>
 
@@ -79,7 +82,7 @@ export default function AboutPage() {
                                     </div>
                                     <h3 className="text-xl font-bold text-[#0E1C2F] leading-tight tracking-tight">Community</h3>
                                     <p className="text-sm text-[#0E1C2F]/60 leading-relaxed font-medium">
-                                        Join thousands of other developers all discussing and guiding the future of the Broadsage security platform.
+                                        Connect with a global collective of security researchers, AI pioneers, and DevOps architects building the next generation of resilient software.
                                     </p>
                                 </div>
                             </div>

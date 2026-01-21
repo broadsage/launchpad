@@ -58,7 +58,7 @@ export function Header() {
             items: [
                 { title: "Help Center", description: "Get your issues resolved.", icon: <Shield className="w-4 h-4 text-gray-600" /> },
                 { title: "Status", description: "Monitor platform health.", icon: <BarChart3 className="w-4 h-4 text-gray-600" /> },
-                { title: "Contact", description: "Talk to our team.", icon: <Layout className="w-4 h-4 text-gray-600" /> },
+                { title: "Contact", description: "Talk to our team.", icon: <Layout className="w-4 h-4 text-gray-600" />, href: "/contact" },
             ]
         }
     ];
@@ -104,7 +104,7 @@ export function Header() {
             rightContent={
                 <>
                     <Link
-                        href="#"
+                        href="/contact"
                         className="text-[14px] font-semibold text-slate-600 hover:text-[#6226FA] hidden sm:block transition-all duration-300 tracking-tight"
                     >
                         Contact

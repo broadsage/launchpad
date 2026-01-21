@@ -56,10 +56,10 @@ export function Footer() {
         {
             title: "Support",
             links: [
-                { label: "Docs", href: "#" },
+                { label: "Docs", href: "/docs" },
                 { label: "Community", href: "#" },
                 { label: "Status", href: "#" },
-                { label: "Contact", href: "#" },
+                { label: "Contact", href: "/contact" },
             ],
         },
         {
