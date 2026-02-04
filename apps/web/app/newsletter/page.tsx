@@ -49,107 +49,67 @@ export default function NewsletterPage() {
                                 initial={{ opacity: 0, scale: 0.9 }}
                                 animate={{ opacity: 1, scale: 1 }}
                                 transition={{ duration: 0.5, delay: 0.2 }}
-                                className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-blue-500/20 to-purple-500/20 border border-blue-500/30 backdrop-blur-sm mb-8"
+                                className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 border border-white/20 backdrop-blur-md mb-8"
                             >
                                 <span className="relative flex h-2 w-2">
-                                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75" />
-                                    <span className="relative inline-flex rounded-full h-2 w-2 bg-blue-500" />
+                                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#6226FA] opacity-75" />
+                                    <span className="relative inline-flex rounded-full h-2 w-2 bg-[#6226FA]" />
                                 </span>
-                                <span className="text-sm font-semibold text-blue-200">Developer Newsletter</span>
+                                <span className="text-xs font-bold uppercase tracking-widest text-white">Mission-Critical Briefing</span>
                             </motion.div>
 
                             {/* Main Heading */}
-                            <h1 className="text-[1.15rem] sm:text-[2rem] md:text-[2.5rem] lg:text-[2rem] xl:text-[2.5rem] font-black tracking-tight mb-6 bg-gradient-to-r from-white via-blue-100 to-purple-100 bg-clip-text text-transparent leading-tight whitespace-nowrap">
-                                Stay ahead of the curve
+                            <h1 className="text-5xl md:text-6xl font-black tracking-tight mb-8 leading-[0.9]">
+                                Intelligence for the <br />
+                                <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#6226FA] to-blue-400">Modern Enterprise.</span>
                             </h1>
 
-                            <p className="text-xl text-gray-300 mb-12 leading-relaxed">
-                                Join <span className="text-white font-bold">15,000+</span> developers getting the latest updates, tutorials, and insights delivered to their inbox.
+                            <p className="text-lg text-gray-400 mb-12 leading-relaxed max-w-xl">
+                                Join <span className="text-white font-bold">15,000+</span> technology leaders receiving curated insights on Kubernetes orchestration, AI-native platforms, and open-source stewardship.
                             </p>
 
                             {/* Stats Cards */}
-                            <div className="grid grid-cols-3 gap-4 mb-12">
+                            <div className="grid grid-cols-2 gap-4 mb-12">
                                 <motion.div
                                     initial={{ opacity: 0, y: 20 }}
                                     animate={{ opacity: 1, y: 0 }}
                                     transition={{ duration: 0.5, delay: 0.3 }}
-                                    className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-4 hover:bg-white/10 transition-all duration-300"
+                                    className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6"
                                 >
-                                    <div className="text-3xl font-black text-white mb-1">15K+</div>
-                                    <div className="text-xs text-gray-400 uppercase tracking-wide">Subscribers</div>
+                                    <div className="text-4xl font-black text-white mb-1 tracking-tighter">12K+</div>
+                                    <div className="text-[10px] text-gray-500 font-bold uppercase tracking-widest">Global Architects</div>
                                 </motion.div>
                                 <motion.div
                                     initial={{ opacity: 0, y: 20 }}
                                     animate={{ opacity: 1, y: 0 }}
                                     transition={{ duration: 0.5, delay: 0.4 }}
-                                    className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-4 hover:bg-white/10 transition-all duration-300"
+                                    className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6"
                                 >
-                                    <div className="text-3xl font-black text-white mb-1">2x</div>
-                                    <div className="text-xs text-gray-400 uppercase tracking-wide">Per Month</div>
-                                </motion.div>
-                                <motion.div
-                                    initial={{ opacity: 0, y: 20 }}
-                                    animate={{ opacity: 1, y: 0 }}
-                                    transition={{ duration: 0.5, delay: 0.5 }}
-                                    className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-4 hover:bg-white/10 transition-all duration-300"
-                                >
-                                    <div className="text-3xl font-black text-white mb-1">5min</div>
-                                    <div className="text-xs text-gray-400 uppercase tracking-wide">Read Time</div>
+                                    <div className="text-4xl font-black text-white mb-1 tracking-tighter">Bi-Weekly</div>
+                                    <div className="text-[10px] text-gray-500 font-bold uppercase tracking-widest">Technical Cadence</div>
                                 </motion.div>
                             </div>
 
                             {/* Features List */}
-                            <div className="space-y-6">
-                                <motion.div
-                                    initial={{ opacity: 0, x: -20 }}
-                                    animate={{ opacity: 1, x: 0 }}
-                                    transition={{ duration: 0.5, delay: 0.6 }}
-                                    className="flex gap-4 group"
-                                >
-                                    <div className="flex-shrink-0 w-14 h-14 rounded-2xl bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center shadow-lg shadow-blue-500/50 group-hover:shadow-blue-500/70 transition-all duration-300 group-hover:scale-110">
-                                        <Lightbulb className="w-7 h-7 text-white" strokeWidth={2} />
+                            <div className="space-y-8">
+                                <div className="flex gap-5 group">
+                                    <div className="flex-shrink-0 w-12 h-12 rounded-xl bg-[#6226FA]/20 border border-[#6226FA]/30 flex items-center justify-center group-hover:bg-[#6226FA] transition-all">
+                                        <Lightbulb className="w-6 h-6 text-[#6226FA] group-hover:text-white" />
                                     </div>
-                                    <div className="flex-1">
-                                        <h3 className="text-xl font-bold mb-2 text-white">Expert Insights</h3>
-                                        <p className="text-gray-300 text-base leading-relaxed">
-                                            Deep dives into AI, cloud infrastructure, and cutting-edge development practices.
-                                        </p>
+                                    <div>
+                                        <h3 className="text-lg font-bold text-white mb-1">Architectural Patterns</h3>
+                                        <p className="text-sm text-gray-500 leading-relaxed">Proven blueprints for scaling hybrid clouds and AI workloads.</p>
                                     </div>
-                                </motion.div>
-
-                                <motion.div
-                                    initial={{ opacity: 0, x: -20 }}
-                                    animate={{ opacity: 1, x: 0 }}
-                                    transition={{ duration: 0.5, delay: 0.7 }}
-                                    className="flex gap-4 group"
-                                >
-                                    <div className="flex-shrink-0 w-14 h-14 rounded-2xl bg-gradient-to-br from-purple-500 to-purple-600 flex items-center justify-center shadow-lg shadow-purple-500/50 group-hover:shadow-purple-500/70 transition-all duration-300 group-hover:scale-110">
-                                        <Rocket className="w-7 h-7 text-white" strokeWidth={2} />
+                                </div>
+                                <div className="flex gap-5 group">
+                                    <div className="flex-shrink-0 w-12 h-12 rounded-xl bg-blue-500/20 border border-blue-500/30 flex items-center justify-center group-hover:bg-blue-500 transition-all">
+                                        <Rocket className="w-6 h-6 text-blue-500 group-hover:text-white" />
                                     </div>
-                                    <div className="flex-1">
-                                        <h3 className="text-xl font-bold mb-2 text-white">Ship Faster</h3>
-                                        <p className="text-gray-300 text-base leading-relaxed">
-                                            Proven workflows, tools, and techniques to accelerate your development velocity.
-                                        </p>
+                                    <div>
+                                        <h3 className="text-lg font-bold text-white mb-1">Ecosystem Updates</h3>
+                                        <p className="text-sm text-gray-400 leading-relaxed">Stay updated on upstream contributions and new open standards.</p>
                                     </div>
-                                </motion.div>
-
-                                <motion.div
-                                    initial={{ opacity: 0, x: -20 }}
-                                    animate={{ opacity: 1, x: 0 }}
-                                    transition={{ duration: 0.5, delay: 0.8 }}
-                                    className="flex gap-4 group"
-                                >
-                                    <div className="flex-shrink-0 w-14 h-14 rounded-2xl bg-gradient-to-br from-green-500 to-emerald-600 flex items-center justify-center shadow-lg shadow-green-500/50 group-hover:shadow-green-500/70 transition-all duration-300 group-hover:scale-110">
-                                        <Mail className="w-7 h-7 text-white" strokeWidth={2} />
-                                    </div>
-                                    <div className="flex-1">
-                                        <h3 className="text-xl font-bold mb-2 text-white">Zero Spam</h3>
-                                        <p className="text-gray-300 text-base leading-relaxed">
-                                            Quality over quantity. Curated content delivered every two weeks. Unsubscribe anytime.
-                                        </p>
-                                    </div>
-                                </motion.div>
+                                </div>
                             </div>
                         </motion.div>
                     </div>

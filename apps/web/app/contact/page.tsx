@@ -9,9 +9,14 @@ import { PremiumButton } from "@repo/ui/premium-button";
 
 export default function ContactPage() {
     const [submitted, setSubmitted] = React.useState(false);
+    const [isSubmitting, setIsSubmitting] = React.useState(false);
 
-    const handleSubmit = (e: React.FormEvent) => {
+    const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
+        setIsSubmitting(true);
+        // Simulate a secure connection establishing
+        await new Promise(resolve => setTimeout(resolve, 1500));
+        setIsSubmitting(false);
         setSubmitted(true);
     };
 
@@ -39,8 +44,26 @@ export default function ContactPage() {
 
     return (
         <PageLayout>
-            <main className="pt-24 pb-16">
-                <Container>
+            <main className="relative pt-24 pb-16 bg-[#FAFAFB] overflow-hidden">
+                {/* Atmospheric Background Elements */}
+                <div className="absolute inset-0 pointer-events-none overflow-hidden">
+                    <div className="absolute inset-0 opacity-[0.4] bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:24px_24px]" />
+                    <motion.div
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ duration: 2 }}
+                        className="absolute top-[-10%] left-[-10%] w-[50%] h-[50%] bg-[#6226FA]/5 rounded-full blur-[120px] animate-pulse"
+                    />
+                    <motion.div
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ duration: 2, delay: 0.5 }}
+                        className="absolute bottom-[-10%] right-[-10%] w-[60%] h-[60%] bg-[#00C2FF]/5 rounded-full blur-[150px]"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-b from-[#FAFAFB] via-transparent to-[#FAFAFB]" />
+                </div>
+
+                <Container className="relative z-10">
                     {/* Hero Section */}
                     <motion.div
                         variants={containerVariants}
@@ -53,273 +76,262 @@ export default function ContactPage() {
                             className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white border border-gray-200 shadow-sm mb-6"
                         >
                             <div className="w-2 h-2 rounded-full bg-[#6226FA] animate-pulse" />
-                            <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-gray-500">Contact Us</span>
+                            <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-gray-500">Architectural Advisory</span>
                         </motion.div>
                         <motion.h1
                             variants={itemVariants}
-                            className="text-5xl md:text-7xl font-bold tracking-tight text-[#0D161C] mb-6"
+                            className="text-5xl md:text-8xl font-bold tracking-tight text-[#0D161C] mb-8 leading-[0.9]"
                         >
-                            Get in touch with <br />
-                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#6226FA] to-[#00C2FF]">our team today.</span>
+                            Architecting the <br />
+                            <span className="text-gradient-vibrant">Future, Together.</span>
                         </motion.h1>
                         <motion.p
                             variants={itemVariants}
-                            className="text-xl text-gray-500 font-medium leading-relaxed"
+                            className="text-xl text-gray-500 font-medium leading-relaxed max-w-2xl mx-auto"
                         >
-                            Whether you have questions about our hardened images, want to discuss custom security solutions, or need technical support, we're here to help.
+                            Engage with our principal systems architects and AI strategists. Whether you&apos;re building global Kubernetes clusters or private intelligence clouds, we provide the technical foundation for success.
                         </motion.p>
                     </motion.div>
 
-                    <div className="grid lg:grid-cols-12 gap-12 items-start mb-0">
-                        {/* Contact Form Card */}
-                        <motion.div
-                            initial={{ opacity: 0, x: -20 }}
-                            animate={{ opacity: 1, x: 0 }}
-                            transition={{ delay: 0.4, duration: 0.8 }}
-                            className="lg:col-span-7 bg-white rounded-[32px] p-8 md:p-12 shadow-[0_32px_64px_-16px_rgba(98,38,250,0.08)] border border-gray-100 relative overflow-hidden group"
-                        >
-                            {/* Decorative background element */}
-                            <div className="absolute top-0 right-0 w-64 h-64 bg-purple-50 rounded-full blur-3xl opacity-50 -mr-32 -mt-32 pointer-events-none transition-transform duration-1000 group-hover:scale-110" />
-
-                            {submitted ? (
-                                <motion.div
-                                    initial={{ opacity: 0, scale: 0.9 }}
-                                    animate={{ opacity: 1, scale: 1 }}
-                                    className="text-center py-12"
-                                >
-                                    <div className="w-20 h-20 bg-green-50 rounded-full flex items-center justify-center mx-auto mb-8">
-                                        <CheckCircle2 className="w-10 h-10 text-green-500" />
-                                    </div>
-                                    <h2 className="text-3xl font-bold text-[#0D161C] mb-4">Message Received!</h2>
-                                    <p className="text-gray-500 mb-8 max-w-sm mx-auto">
-                                        Thank you for reaching out. A member of the Broadsage team will get back to you within 24 hours.
-                                    </p>
-                                    <PremiumButton
-                                        variant="purple"
-                                        onClick={() => setSubmitted(false)}
-                                        className="h-12 px-8"
-                                    >
-                                        Send another message
-                                    </PremiumButton>
-                                </motion.div>
-                            ) : (
-                                <form onSubmit={handleSubmit} className="relative z-10 grid grid-cols-1 md:grid-cols-2 gap-6">
-                                    <div className="space-y-2">
-                                        <label htmlFor="first-name" className="text-xs font-bold uppercase tracking-wider text-gray-400 ml-1">First Name</label>
-                                        <input
-                                            id="first-name"
-                                            type="text"
-                                            required
-                                            placeholder="Jane"
-                                            className="w-full h-12 px-4 rounded-xl bg-gray-50 border border-gray-100 focus:border-[#6226FA] focus:ring-2 focus:ring-[#6226FA]/10 outline-none transition-all placeholder:text-gray-300 font-medium"
-                                        />
-                                    </div>
-                                    <div className="space-y-2">
-                                        <label htmlFor="last-name" className="text-xs font-bold uppercase tracking-wider text-gray-400 ml-1">Last Name</label>
-                                        <input
-                                            id="last-name"
-                                            type="text"
-                                            required
-                                            placeholder="Smith"
-                                            className="w-full h-12 px-4 rounded-xl bg-gray-50 border border-gray-100 focus:border-[#6226FA] focus:ring-2 focus:ring-[#6226FA]/10 outline-none transition-all placeholder:text-gray-300 font-medium"
-                                        />
-                                    </div>
-                                    <div className="md:col-span-2 space-y-2">
-                                        <label htmlFor="work-email" className="text-xs font-bold uppercase tracking-wider text-gray-400 ml-1">Work Email</label>
-                                        <input
-                                            id="work-email"
-                                            type="email"
-                                            required
-                                            placeholder="jane@company.com"
-                                            className="w-full h-12 px-4 rounded-xl bg-gray-50 border border-gray-100 focus:border-[#6226FA] focus:ring-2 focus:ring-[#6226FA]/10 outline-none transition-all placeholder:text-gray-300 font-medium"
-                                        />
-                                    </div>
-                                    <div className="md:col-span-2 space-y-2">
-                                        <label htmlFor="reason" className="text-xs font-bold uppercase tracking-wider text-gray-400 ml-1">Reason for contacting</label>
-                                        <select
-                                            id="reason"
-                                            required
-                                            defaultValue=""
-                                            className="w-full h-12 px-4 rounded-xl bg-gray-50 border border-gray-100 focus:border-[#6226FA] focus:ring-2 focus:ring-[#6226FA]/10 outline-none transition-all font-medium appearance-none cursor-pointer"
-                                        >
-                                            <option value="" disabled>Select an option</option>
-                                            <option value="sales">Licensing & Pricing (Sales)</option>
-                                            <option value="support">Technical Support</option>
-                                            <option value="partner">Partner Program</option>
-                                            <option value="feature">Feature Request</option>
-                                            <option value="other">Other</option>
-                                        </select>
-                                    </div>
-                                    <div className="md:col-span-2 space-y-2">
-                                        <label htmlFor="message" className="text-xs font-bold uppercase tracking-wider text-gray-400 ml-1">Message</label>
-                                        <textarea
-                                            id="message"
-                                            required
-                                            rows={4}
-                                            placeholder="Tell us how we can help..."
-                                            className="w-full px-4 py-3 rounded-xl bg-gray-50 border border-gray-100 focus:border-[#6226FA] focus:ring-2 focus:ring-[#6226FA]/10 outline-none transition-all placeholder:text-gray-300 font-medium resize-none"
-                                        />
-                                    </div>
-                                    <div className="md:col-span-2 pt-4">
-                                        <PremiumButton variant="purple" type="submit" className="w-full h-14 text-sm font-bold tracking-tight rounded-2xl group/btn">
-                                            Send Message <ArrowRight className="w-4 h-4 ml-2 group-hover/btn:translate-x-1 transition-transform" />
-                                        </PremiumButton>
-                                    </div>
-                                    <p className="md:col-span-2 text-center text-[10px] text-gray-400 font-medium">
-                                        By submitting this form, you agree to our <a href="#" className="underline hover:text-[#6226FA]">Privacy Policy</a>.
-                                    </p>
-                                </form>
-                            )}
-                        </motion.div>
-
-                        {/* Contact Info & Sidebar */}
-                        <motion.div
-                            initial={{ opacity: 0, x: 20 }}
-                            animate={{ opacity: 1, x: 0 }}
-                            transition={{ delay: 0.6, duration: 0.8 }}
-                            className="lg:col-span-5 flex flex-col"
-                        >
-                            <div className="mb-8">
-                                <h3 className="text-2xl font-bold text-[#0D161C] tracking-tight mb-4">Prefer direct contact?</h3>
-                                <p className="text-gray-500 font-medium">Reach out through our specialized channels for faster response times.</p>
-                            </div>
-
-                            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2 gap-4 flex-1">
-                                {[
-                                    {
-                                        title: "Customer Support",
-                                        desc: "Direct assistance with technical implementation, architectural guidance, or image documentation from our core team.",
-                                        link: "support@broadsage.io",
-                                        icon: MessageSquare
-                                    },
-                                    {
-                                        title: "Security Research",
-                                        desc: "Priority reporting for vulnerability concerns. Direct access to our security researchers and bug bounty programs.",
-                                        link: "security@broadsage.io",
-                                        icon: Globe
-                                    },
-                                    {
-                                        title: "Open Source",
-                                        desc: "Contribute to our distroless core, participate in community discussions, or build tools on the Broadsage platform.",
-                                        link: "github.com/broadsage",
-                                        icon: Github,
-                                        isExternal: true
-                                    },
-                                    {
-                                        title: "General Inquiries",
-                                        desc: "Reach out for strategic partnership opportunities, press inquiries, or general questions about our mission.",
-                                        link: "hello@broadsage.io",
-                                        icon: Mail
-                                    }
-                                ].map((item) => (
-                                    <div key={item.title} className="flex flex-col justify-between p-5 rounded-3xl border border-gray-100 bg-white shadow-sm hover:shadow-md transition-all group">
-                                        <div>
-                                            <div className="w-9 h-9 shrink-0 rounded-xl bg-purple-50 flex items-center justify-center group-hover:bg-[#6226FA] transition-colors mb-4">
-                                                <item.icon className="w-4 h-4 text-[#6226FA] group-hover:text-white transition-colors" />
-                                            </div>
-                                            <h4 className="font-bold text-[#0D161C] text-[14px] mb-1.5">{item.title}</h4>
-                                            <p className="text-[10px] text-gray-400 font-medium leading-relaxed line-clamp-3">
-                                                {item.desc}
-                                            </p>
-                                        </div>
-                                        <div className="mt-4 pt-4 border-t border-gray-50">
-                                            <a
-                                                href={item.isExternal ? `https://${item.link}` : `mailto:${item.link}`}
-                                                target={item.isExternal ? "_blank" : undefined}
-                                                rel={item.isExternal ? "noopener noreferrer" : undefined}
-                                                className="text-[12px] font-bold text-[#6226FA] hover:underline flex items-center gap-1"
-                                            >
-                                                Reach out <ArrowRight className="w-3 h-3 ml-1" />
-                                            </a>
-                                        </div>
-                                    </div>
-                                ))}
-                            </div>
-                        </motion.div>
-                    </div>
-
-                    {/* Enterprise Inquiries - Premium Banner Alignment */}
+                    {/* Unified Contact Section */}
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        className="mt-16 p-8 md:p-12 rounded-[40px] bg-[#0D161C] text-white relative overflow-hidden group border border-white/5"
-                    >
-                        <div className="absolute inset-0 blueprint-grid opacity-10 pointer-events-none" />
-                        <div className="absolute top-0 right-0 w-96 h-96 bg-[#6226FA]/20 rounded-full blur-[100px] -mr-48 -mt-48 animate-pulse" />
-
-                        <div className="relative z-10 flex flex-col lg:flex-row items-center justify-between gap-10">
-                            <div className="max-w-2xl text-center lg:text-left">
-                                <h3 className="text-3xl md:text-4xl font-bold mb-4 tracking-tight">
-                                    Enterprise-Grade Security <br className="hidden md:block" />
-                                    <span className="text-[#6226FA]">at Global Scale.</span>
-                                </h3>
-                                <p className="text-gray-400 text-lg font-medium leading-relaxed">
-                                    Deploy Broadsage across your entire organization with dedicated support, custom hardening pipelines, and priority vulnerability patching.
-                                </p>
-                            </div>
-                            <div className="shrink-0 w-full lg:w-auto">
-                                <PremiumButton variant="purple" className="w-full lg:w-auto h-16 px-10 text-lg bg-white text-[#0D161C] hover:bg-gray-100 shadow-xl shadow-[#6226FA]/20 transition-all active:scale-95 font-bold">
-                                    Schedule an Audit
-                                </PremiumButton>
-                            </div>
-                        </div>
-                    </motion.div>
-
-                    {/* Technical Sovereignty Section */}
-                    <motion.div
-                        initial={{ opacity: 0, y: 40 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
+                        animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.8 }}
-                        className="mt-32 p-12 lg:p-20 rounded-[48px] bg-[#FAFAFA] border border-gray-100 overflow-hidden relative"
+                        className="bg-white rounded-[48px] shadow-[0_48px_128px_-32px_rgba(98,38,250,0.1)] border border-gray-100 overflow-hidden"
                     >
-                        <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom_right,rgba(98,38,250,0.03)_0%,transparent_50%)] pointer-events-none" />
+                        <div className="grid lg:grid-cols-12 items-stretch">
+                            {/* Left Side: Contact Form */}
+                            <div className="lg:col-span-7 p-8 md:p-14 relative overflow-hidden group">
+                                {/* Subtle decorative gradient */}
+                                <div className="absolute top-0 right-0 w-80 h-80 bg-gradient-to-br from-[#6226FA]/5 to-[#00C2FF]/5 rounded-full blur-3xl -mr-40 -mt-40 pointer-events-none group-hover:scale-110 transition-transform duration-1000" />
 
-                        <div className="grid lg:grid-cols-2 gap-16 items-center relative z-10">
-                            <div>
-                                <h2 className="text-4xl font-bold text-[#0D161C] tracking-tight mb-6">
-                                    Built for High-Stakes <br />
-                                    <span className="text-[#6226FA]">Technical Sovereignty.</span>
-                                </h2>
-                                <p className="text-lg text-gray-500 font-medium leading-relaxed mb-8">
-                                    Broadsage provides the cryptographic proof and hardened core required for mission-critical software and AI workloads. We give teams absolute control over their supply chain, eliminating upstream risks at the source.
-                                </p>
-                                <div className="space-y-4">
-                                    {[
-                                        "Immutable Software Supply Chain Operations",
-                                        "Cryptographical Proof of Integrity for all Artifacts",
-                                        "Automated Hardening for AI & GPU Runtimes",
-                                        "Enterprise-Grade Compliance & Governance"
-                                    ].map(item => (
-                                        <div key={item} className="flex items-center gap-3">
-                                            <div className="flex-shrink-0 w-5 h-5 rounded-full bg-[#6226FA]/10 flex items-center justify-center">
-                                                <CheckCircle2 className="w-3.5 h-3.5 text-[#6226FA]" />
-                                            </div>
-                                            <span className="font-bold text-[#0D161C] text-sm">{item}</span>
+                                {submitted ? (
+                                    <motion.div
+                                        initial={{ opacity: 0, scale: 0.95 }}
+                                        animate={{ opacity: 1, scale: 1 }}
+                                        className="h-full flex flex-col items-center justify-center text-center py-20"
+                                    >
+                                        <div className="w-20 h-20 bg-green-50 rounded-full flex items-center justify-center mb-6">
+                                            <ShieldCheck className="w-10 h-10 text-green-500" />
                                         </div>
-                                    ))}
+                                        <h3 className="text-3xl font-bold text-[#0D161C] mb-4">Message Securely Sent</h3>
+                                        <p className="text-gray-500 max-w-sm mx-auto font-medium">
+                                            Thank you for reaching out. A technical advisor will review your inquiry and respond within 12-24 hours.
+                                        </p>
+                                        <button
+                                            onClick={() => setSubmitted(false)}
+                                            className="mt-8 text-sm font-bold text-[#6226FA] hover:underline"
+                                        >
+                                            Send another message
+                                        </button>
+                                    </motion.div>
+                                ) : (
+                                    <form onSubmit={handleSubmit} className="relative z-10 grid md:grid-cols-2 gap-x-6 gap-y-7">
+                                        <div className="space-y-2">
+                                            <label className="text-xs font-bold uppercase tracking-widest text-gray-400 ml-1">First Name</label>
+                                            <input
+                                                type="text"
+                                                required
+                                                placeholder="Jane"
+                                                className="w-full h-14 px-5 rounded-2xl bg-gray-50/50 border border-gray-100 focus:bg-white focus:border-[#6226FA] focus:ring-4 focus:ring-[#6226FA]/5 outline-none transition-all placeholder:text-gray-300 font-medium hover:bg-gray-50"
+                                            />
+                                        </div>
+                                        <div className="space-y-2">
+                                            <label className="text-xs font-bold uppercase tracking-widest text-gray-400 ml-1">Last Name</label>
+                                            <input
+                                                type="text"
+                                                required
+                                                placeholder="Doe"
+                                                className="w-full h-14 px-5 rounded-2xl bg-gray-50/50 border border-gray-100 focus:bg-white focus:border-[#6226FA] focus:ring-4 focus:ring-[#6226FA]/5 outline-none transition-all placeholder:text-gray-300 font-medium hover:bg-gray-50"
+                                            />
+                                        </div>
+                                        <div className="space-y-2">
+                                            <label className="text-xs font-bold uppercase tracking-widest text-gray-400 ml-1">Work Email</label>
+                                            <input
+                                                type="email"
+                                                required
+                                                placeholder="jane@company.com"
+                                                className="w-full h-14 px-5 rounded-2xl bg-gray-50/50 border border-gray-100 focus:bg-white focus:border-[#6226FA] focus:ring-4 focus:ring-[#6226FA]/5 outline-none transition-all placeholder:text-gray-300 font-medium hover:bg-gray-50"
+                                            />
+                                        </div>
+                                        <div className="space-y-2">
+                                            <label className="text-xs font-bold uppercase tracking-widest text-gray-400 ml-1">Company</label>
+                                            <input
+                                                type="text"
+                                                required
+                                                placeholder="Acme Corp"
+                                                className="w-full h-14 px-5 rounded-2xl bg-gray-50/50 border border-gray-100 focus:bg-white focus:border-[#6226FA] focus:ring-4 focus:ring-[#6226FA]/5 outline-none transition-all placeholder:text-gray-300 font-medium hover:bg-gray-50"
+                                            />
+                                        </div>
+                                        <div className="md:col-span-2 space-y-2">
+                                            <label className="text-xs font-bold uppercase tracking-widest text-gray-400 ml-1">Inquiry Reason</label>
+                                            <div className="relative">
+                                                <select
+                                                    required
+                                                    defaultValue=""
+                                                    className="w-full h-14 px-5 rounded-2xl bg-gray-50/50 border border-gray-100 focus:bg-white focus:border-[#6226FA] focus:ring-4 focus:ring-[#6226FA]/5 outline-none transition-all font-medium hover:bg-gray-50 appearance-none cursor-pointer"
+                                                >
+                                                    <option value="" disabled>Select an option</option>
+                                                    <option value="infrastructure">Infrastructure & Hybrid Cloud</option>
+                                                    <option value="ai">AI Platforms & Intelligence</option>
+                                                    <option value="ecosystem">Developer Ecosystems</option>
+                                                    <option value="audit">Security & Sovereignty Audit</option>
+                                                    <option value="partnership">Strategic Partnership</option>
+                                                </select>
+                                                <div className="absolute right-5 top-1/2 -translate-y-1/2 pointer-events-none text-gray-400">
+                                                    <Plus className="w-4 h-4" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div className="md:col-span-2 space-y-2">
+                                            <label className="text-xs font-bold uppercase tracking-widest text-gray-400 ml-1">Message</label>
+                                            <textarea
+                                                required
+                                                rows={4}
+                                                placeholder="How can we help you?"
+                                                className="w-full px-5 py-4 rounded-2xl bg-gray-50/50 border border-gray-100 focus:bg-white focus:border-[#6226FA] focus:ring-4 focus:ring-[#6226FA]/5 outline-none transition-all placeholder:text-gray-300 font-medium resize-none hover:bg-gray-50"
+                                            />
+                                        </div>
+                                        <div className="md:col-span-2 pt-2">
+                                            <PremiumButton
+                                                variant="purple"
+                                                type="submit"
+                                                disabled={isSubmitting}
+                                                className="w-full h-16 text-lg font-bold shadow-xl shadow-[#6226FA]/10 active:scale-[0.98] transition-transform flex items-center justify-center gap-2"
+                                            >
+                                                {isSubmitting ? "Initiating Secure Channel..." : "Send Message"}
+                                                {!isSubmitting && <ArrowRight className="w-5 h-5" />}
+                                            </PremiumButton>
+                                        </div>
+                                        <div className="md:col-span-2 py-4 border-t border-gray-50 mt-4">
+                                            <div className="flex flex-wrap items-center justify-center gap-8 opacity-40 grayscale group-hover:grayscale-0 transition-all duration-700">
+                                                <div className="flex items-center gap-2 text-[10px] font-bold uppercase tracking-widest text-gray-500">
+                                                    <ShieldCheck className="w-4 h-4" /> SOC2 TYPE II
+                                                </div>
+                                                <div className="flex items-center gap-2 text-[10px] font-bold uppercase tracking-widest text-gray-500">
+                                                    <Lock className="w-4 h-4" /> ISO 27001
+                                                </div>
+                                                <div className="flex items-center gap-2 text-[10px] font-bold uppercase tracking-widest text-gray-500">
+                                                    <Globe className="w-4 h-4" /> GDPR READY
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <p className="md:col-span-2 text-center text-[10px] text-gray-400 font-medium">
+                                            By clicking send, you agree to our <a href="#" className="underline">Privacy Policy</a> and <a href="#" className="underline">Terms</a>.
+                                        </p>
+                                    </form>
+                                )}
+                            </div>
+
+                            {/* Right Side: Info Channels */}
+                            <div className="lg:col-span-5 bg-gray-50/50 border-l border-gray-100 p-8 md:p-14 relative overflow-hidden flex flex-col">
+                                {/* Sophisticated Background Decor */}
+                                <div className="absolute top-0 right-0 w-full h-full opacity-[0.4] bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:32px_32px] pointer-events-none" />
+                                <div className="absolute top-[-10%] right-[-10%] w-[100%] h-[100%] bg-gradient-to-br from-[#6226FA]/5 to-transparent rounded-full blur-[100px] pointer-events-none" />
+
+                                <div className="relative z-10 flex flex-col h-full">
+                                    <div className="mb-12">
+                                        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white border border-gray-100 shadow-sm mb-6">
+                                            <span className="relative flex h-2 w-2">
+                                                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#6226FA] opacity-75"></span>
+                                                <span className="relative inline-flex rounded-full h-2 w-2 bg-[#6226FA]"></span>
+                                            </span>
+                                            <span className="text-[10px] font-bold uppercase tracking-widest text-gray-400">Direct Channels</span>
+                                        </div>
+                                        <h3 className="text-3xl font-bold text-[#0D161C] tracking-tight mb-4">
+                                            Prefer direct contact?
+                                        </h3>
+                                        <p className="text-gray-500 font-medium text-lg leading-relaxed">
+                                            Reach out through our specialized channels for prioritized response times across our entire ecosystem.
+                                        </p>
+                                    </div>
+
+                                    <div className="grid gap-4 flex-1">
+                                        {[
+                                            {
+                                                title: "Customer Support",
+                                                desc: "Technical implementation and infrastructure assistance.",
+                                                link: "support@broadsage.com",
+                                                icon: MessageSquare,
+                                                color: "text-[#6226FA]",
+                                                bg: "bg-[#6226FA]/10",
+                                                border: "border-[#6226FA]/20",
+                                                accent: "bg-[#6226FA]",
+                                                meta: "Avg Response: < 2h"
+                                            },
+                                            {
+                                                title: "Security Research",
+                                                desc: "Vulnerability reporting and bug bounty programs.",
+                                                link: "security@broadsage.com",
+                                                icon: ShieldCheck,
+                                                color: "text-[#00C2FF]",
+                                                bg: "bg-[#00C2FF]/10",
+                                                border: "border-[#00C2FF]/20",
+                                                accent: "bg-[#00C2FF]",
+                                                meta: "24/7 Monitoring"
+                                            },
+                                            {
+                                                title: "Open Source",
+                                                desc: "Contribute to core projects and ecosystem discussions.",
+                                                link: "github.com/broadsage",
+                                                icon: Github,
+                                                isExternal: true,
+                                                color: "text-[#0D161C]",
+                                                bg: "bg-gray-100",
+                                                border: "border-gray-200",
+                                                accent: "bg-[#0D161C]",
+                                                meta: "Active Community"
+                                            },
+                                            {
+                                                title: "General Inquiries",
+                                                desc: "Strategic partnerships and general questions.",
+                                                link: "hello@broadsage.com",
+                                                icon: Mail,
+                                                color: "text-[#F59E0B]",
+                                                bg: "bg-[#F59E0B]/10",
+                                                border: "border-[#F59E0B]/20",
+                                                accent: "bg-[#F59E0B]",
+                                                meta: "M-F 9am-6pm PST"
+                                            }
+                                        ].map((item) => (
+                                            <div
+                                                key={item.title}
+                                                className="group/card relative p-5 rounded-[28px] border border-gray-200 bg-white/80 hover:bg-white transition-all duration-300 backdrop-blur-sm flex items-start gap-4 hover:shadow-[0_12px_32px_-8px_rgba(0,0,0,0.06)] hover:-translate-y-0.5"
+                                            >
+                                                <div className={`w-10 h-10 shrink-0 rounded-xl ${item.bg} border ${item.border} flex items-center justify-center group-hover/card:scale-110 transition-transform duration-500`}>
+                                                    <item.icon className={`w-5 h-5 ${item.color}`} />
+                                                </div>
+                                                <div className="flex-1">
+                                                    <div className="flex items-center justify-between mb-1">
+                                                        <h4 className="font-bold text-[#0D161C] text-[15px] tracking-tight">{item.title}</h4>
+                                                        <span className="text-[9px] font-bold text-gray-400 border border-gray-100 px-1.5 py-0.5 rounded-md bg-gray-50/50 uppercase tracking-tighter">
+                                                            {item.meta}
+                                                        </span>
+                                                    </div>
+                                                    <p className="text-[13px] text-gray-500 font-medium leading-normal mb-2">
+                                                        {item.desc}
+                                                    </p>
+                                                    <a
+                                                        href={item.isExternal ? `https://${item.link}` : `mailto:${item.link}`}
+                                                        target={item.isExternal ? "_blank" : undefined}
+                                                        rel={item.isExternal ? "noopener noreferrer" : undefined}
+                                                        className={`inline-flex items-center text-xs font-extrabold ${item.color === "text-[#0D161C]" || item.color === "text-[#F59E0B]" ? 'text-[#6226FA]' : item.color} hover:opacity-80 transition-opacity gap-1`}
+                                                    >
+                                                        {item.link}
+                                                        <ArrowRight className="w-3.5 h-3.5 opacity-0 group-hover/card:opacity-100 group-hover/card:translate-x-1 transition-all" />
+                                                    </a>
+                                                </div>
+                                                <div className={`absolute left-0 top-1/2 -translate-y-1/2 w-1 h-0 group-hover/card:h-2/3 ${item.accent} transition-all duration-500 rounded-r-full opacity-60`} />
+                                            </div>
+                                        ))}
+                                    </div>
                                 </div>
                             </div>
-
-                            <div className="grid grid-cols-2 gap-4">
-                                {[
-                                    { title: "Absolute Transparency", icon: <Eye className="w-5 h-5" />, desc: "Complete SBOM visibility." },
-                                    { title: "Root-of-Trust", icon: <Lock className="w-5 h-5" />, desc: "Sigstore-backed signing." },
-                                    { title: "Zero-Surface", icon: <ShieldCheck className="w-5 h-5" />, desc: "99% less attack surface." },
-                                    { title: "Hardened Pipeline", icon: <Zap className="w-5 h-5" />, desc: "Automated core builds." }
-                                ].map((pillar) => (
-                                    <div key={pillar.title} className="p-6 bg-white rounded-3xl border border-gray-100 shadow-sm hover:shadow-md transition-all group">
-                                        <div className="w-10 h-10 rounded-xl bg-purple-50 text-[#6226FA] flex items-center justify-center mb-4 group-hover:bg-[#6226FA] group-hover:text-white transition-all">
-                                            {pillar.icon}
-                                        </div>
-                                        <h4 className="font-bold text-[#0D161C] text-sm mb-1">{pillar.title}</h4>
-                                        <p className="text-[11px] text-gray-400 font-medium">{pillar.desc}</p>
-                                    </div>
-                                ))}
-                            </div>
                         </div>
                     </motion.div>
+
+
 
                     {/* FAQ Section */}
                     <div className="mt-32 max-w-4xl mx-auto">
@@ -330,20 +342,20 @@ export default function ContactPage() {
                         <div className="grid md:grid-cols-2 gap-x-12 gap-y-12">
                             {[
                                 {
-                                    q: "How fast can we migrate to Broadsage?",
-                                    a: "Most teams can replace their base images with Broadsage hardened versions in under 30 minutes by updating their Dockerfile FROM statements."
+                                    q: "Does Broadsage support hybrid cloud sovereignty?",
+                                    a: "Absolutely. Our infrastructure solutions are designed to run across on-prem, private cloud, and public air-gapped environments while maintaining full technical sovereignty."
                                 },
                                 {
-                                    q: "Do you support self-hosted registries?",
-                                    a: "Yes. Broadsage images can be mirrored to any private registry including Artifactory, Harbor, and AWS ECR."
+                                    q: "Can we deploy private AI models on your platform?",
+                                    a: "Yes. Our AI platforms are built for privacy first, allowing you to train and serve models within your own hardened infrastructure boundaries."
                                 },
                                 {
-                                    q: "What is your vulnerability response time?",
-                                    a: "We rotate our entire catalog within 12 hours of a critical CVE being released, often before public scanners even detect it."
+                                    q: "Are the developer tools fully open standard?",
+                                    a: "We are committed to open standards. Every ecosystem tool we build is fully interoperable and free from proprietary lock-in, ensuring long-term technical freedom."
                                 },
                                 {
-                                    q: "Can we get custom hardening policies?",
-                                    a: "Absolutely. Our Enterprise tier allows you to define custom 'Distroless' profiles tailored to your specific application needs."
+                                    q: "How does Broadsage ensure mission-critical resilience?",
+                                    a: "We integrate AI-driven hardening at the core infrastructure layer, providing real-time resilience and automated security that evolves with your workload requirements."
                                 }
                             ].map((faq, i) => (
                                 <motion.div
@@ -365,8 +377,9 @@ export default function ContactPage() {
                         </div>
 
                     </div>
+
                 </Container>
-            </main>
+            </main >
         </PageLayout >
     );
 }

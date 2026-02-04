@@ -1,92 +1,102 @@
 import React from "react";
 import Link from "next/link";
-import { Sparkles, Layout, Cpu, Rocket, Globe, Zap, BarChart3, ShieldCheck, Eye, Shield, ArrowRight, Database, Server, Binary, Package, Lock, Activity } from "lucide-react";
+import { Sparkles, Layout, Cpu, Rocket, Globe, Zap, BarChart3, ShieldCheck, Eye, Shield, ArrowRight, Database, Server, Binary, Package, Lock, Activity, BookOpen, LifeBuoy, Users, Layers } from "lucide-react";
 import { Navbar, NavGroup } from "./navigation";
 import { BroadsageLogo } from "./icons";
 import { PremiumButton } from "./premium-button";
 
+export function UtilityBar() {
+    return (
+        <div className="flex items-center justify-end gap-6 h-10 px-6 bg-[#0b1117] relative overflow-hidden border-b border-white/[0.03]">
+            {/* Ambient background effects to match footer */}
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(98,38,250,0.08)_0%,transparent_50%)] pointer-events-none" />
+            <div className="absolute inset-0 blueprint-grid opacity-[0.03] pointer-events-none" />
+
+            <Link href="/contact" className="relative z-10 flex items-center gap-1.5 text-[12px] font-medium text-slate-300 hover:text-white transition-colors">
+                <Users className="w-3.5 h-3.5 text-slate-400" />
+                <span>Contact</span>
+            </Link>
+            <Link href="/newsletter" className="relative z-10 flex items-center gap-1.5 text-[12px] font-medium text-slate-300 hover:text-white transition-colors">
+                <Rocket className="w-3.5 h-3.5 text-slate-400" />
+                <span>Newsletter</span>
+            </Link>
+            <Link href="/docs" className="relative z-10 flex items-center gap-1.5 text-[12px] font-medium text-slate-300 hover:text-white transition-colors">
+                <BookOpen className="w-3.5 h-3.5 text-slate-400" />
+                <span>Documentation</span>
+            </Link>
+            <div className="h-3 w-px bg-white/10 mx-1 relative z-10" />
+            <Link href="/support" className="relative z-10 flex items-center gap-1.5 text-[12px] font-medium text-slate-300 hover:text-white transition-colors">
+                <LifeBuoy className="w-3.5 h-3.5 text-slate-400" />
+                <span>Support</span>
+            </Link>
+            <Link href="#" className="relative z-10 flex items-center gap-1.5 text-[12px] font-bold text-white hover:text-purple-300 transition-colors">
+                <span>Sign In</span>
+            </Link>
+        </div>
+    );
+}
+
 export function Header() {
     const productGroups: NavGroup[] = [
         {
-            label: "Hardened Images",
+            label: "Hardened Infrastructure",
             items: [
-                { title: "Language Runtimes", description: "Node.js, Python, Go, Java runtimes", icon: <Binary className="w-4 h-4 text-gray-600" /> },
-                { title: "Database Images", description: "Postgres, MySQL, Redis hardened", icon: <Database className="w-4 h-4 text-gray-600" /> },
-                { title: "Base OS", description: "Wolfi, Alpine, Debian minimal bases", icon: <Cpu className="w-4 h-4 text-gray-600" /> },
-                { title: "Enterprise Catalog", description: "9000+ curated secure images", icon: <Package className="w-4 h-4 text-gray-600" /> },
+                { title: "Broadsage Hardened OS", description: "The definitive secure OS foundation.", icon: <Cpu className="w-4 h-4 text-amber-600" />, href: "/products/broadsage-hardened-os" },
+                { title: "Broadsage Hardened Containers", description: "Zero-vulnerability golden images.", icon: <Package className="w-4 h-4 text-amber-600" />, href: "/products/broadsage-hardened-containers" },
+                { title: "Broadsage Hardened VMs", description: "Production-ready secure virtual instances.", icon: <Database className="w-4 h-4 text-amber-600" />, href: "/products/broadsage-hardened-vms" },
             ]
         },
         {
-            label: "Supply Chain",
+            label: "Platform Series",
             items: [
-                { title: "SBOMs", description: "Full visibility into every bit", icon: <Eye className="w-4 h-4 text-gray-600" /> },
-                { title: "Image Signing", description: "Sigstore-backed trust models", icon: <ShieldCheck className="w-4 h-4 text-gray-600" /> },
-                { title: "Vulnerability Scanning", description: "Zero-day protection and alerts", icon: <BarChart3 className="w-4 h-4 text-gray-600" /> },
-                { title: "Attestations", description: "Cryptographically verified builds", icon: <Lock className="w-4 h-4 text-gray-600" /> },
+                { title: "Sentinel DevSecOps", description: "Supply chain defense.", icon: <ShieldCheck className="w-4 h-4 text-[#6226FA]" />, href: "/products/sentinel-devsecops" },
+                { title: "Secure Inference", description: "Private model deployment.", icon: <Rocket className="w-4 h-4 text-[#0D9488]" />, href: "/products/secure-inference" },
             ]
         },
-        {
-            label: "Governance",
-            items: [
-                { title: "Compliance Hub", description: "FedRAMP, SOC2, HIPAA readiness", icon: <Shield className="w-4 h-4 text-gray-600" /> },
-                { title: "Policy Enforcement", description: "OPA and Kyverno integration", icon: <Layout className="w-4 h-4 text-gray-600" /> },
-                { title: "Audit Logging", description: "Comprehensive supply chain trails", icon: <Activity className="w-4 h-4 text-gray-600" /> },
-            ]
-        }
     ];
 
     const resourceGroups: NavGroup[] = [
         {
-            label: "Documentation",
+            label: "Development",
             items: [
-                { title: "Docs", description: "Learn how to use Launchpad.", icon: <Layout className="w-4 h-4 text-gray-600" />, href: "/docs" },
-                { title: "Guides", description: "Step-by-step tutorials.", icon: <ArrowRight className="w-4 h-4 text-gray-600" /> },
-                { title: "API Reference", description: "Full technical docs.", icon: <Cpu className="w-4 h-4 text-gray-600" /> },
+                { title: "Documentation", description: "Full technical references.", icon: <Layout className="w-4 h-4 text-gray-600" />, href: "/docs" },
+                { title: "Open Source Standards", description: "Our contributions to common good.", icon: <Package className="w-4 h-4 text-gray-600" /> },
+                { title: "Training & Certs", description: "Master the Broadsage stack.", icon: <BookOpen className="w-4 h-4 text-gray-600" /> },
             ]
         },
         {
-            label: "Community",
+            label: "Corporate",
             items: [
-                { title: "About Us", description: "Our mission and team.", icon: <Sparkles className="w-4 h-4 text-gray-600" />, href: "/about" },
-                { title: "Blog", description: "Latest news and updates.", icon: <Globe className="w-4 h-4 text-gray-600" /> },
-                { title: "Events", description: "Join our global meetups.", icon: <Zap className="w-4 h-4 text-gray-600" /> },
-                { title: "Customers", description: "See who's building on us.", icon: <ShieldCheck className="w-4 h-4 text-gray-600" /> },
-            ]
-        },
-        {
-            label: "Support",
-            items: [
-                { title: "Help Center", description: "Get your issues resolved.", icon: <Shield className="w-4 h-4 text-gray-600" /> },
-                { title: "Status", description: "Monitor platform health.", icon: <BarChart3 className="w-4 h-4 text-gray-600" /> },
-                { title: "Contact", description: "Talk to our team.", icon: <Layout className="w-4 h-4 text-gray-600" />, href: "/contact" },
+                { title: "About Broadsage", description: "Our vision for the future.", icon: <Sparkles className="w-4 h-4 text-gray-600" />, href: "/about" },
+                { title: "Enterprise Support", description: "24/7 mission-critical aid.", icon: <LifeBuoy className="w-4 h-4 text-gray-600" />, href: "/support" },
+                { title: "Global Partners", description: "Our ecosystem of trust.", icon: <Users className="w-4 h-4 text-gray-600" /> },
             ]
         }
     ];
 
     const solutionGroups: NavGroup[] = [
         {
-            label: "By Use Case",
+            label: "By Industry",
             items: [
-                { title: "E-commerce", description: "Fast, dynamic storefronts.", icon: <Zap className="w-4 h-4 text-gray-600" /> },
-                { title: "AI Apps", description: "Deploy LLMs globally.", icon: <Sparkles className="w-4 h-4 text-gray-600" /> },
-                { title: "SaaS", description: "Scale with confidence.", icon: <Layout className="w-4 h-4 text-gray-600" /> },
+                { title: "Financial Services", description: "Banking-grade security layers.", icon: <Shield className="w-4 h-4 text-gray-600" /> },
+                { title: "Healthcare", description: "HIPAA-compliant AI stacks.", icon: <Activity className="w-4 h-4 text-gray-600" /> },
+                { title: "Public Sector", description: "FedRAMP ready infrastructure.", icon: <Globe className="w-4 h-4 text-gray-600" /> },
             ]
         },
         {
-            label: "By Technology",
+            label: "By Use Case",
             items: [
-                { title: "Next.js", description: "Optimized hosting.", icon: <Globe className="w-4 h-4 text-gray-600" /> },
-                { title: "Strapi", description: "Headless CMS experts.", icon: <Database className="w-4 h-4 text-gray-600" /> },
-                { title: "PostgreSQL", description: "Managed edge data.", icon: <Server className="w-4 h-4 text-gray-600" /> },
+                { title: "AI/ML Integration", description: "Scale private intelligence.", icon: <Sparkles className="w-4 h-4 text-gray-600" /> },
+                { title: "Hybrid Cloud", description: "Unify on-prem and edge.", icon: <Layers className="w-4 h-4 text-gray-600" /> },
+                { title: "DevSecOps Transformation", description: "Automate global security.", icon: <Lock className="w-4 h-4 text-gray-600" /> },
             ]
         }
     ];
 
     const navLinks = [
-        { label: "Products", groups: productGroups, maxWidth: "max-w-[760px]", align: "left" as const },
-        { label: "Resources", groups: resourceGroups, maxWidth: "max-w-[760px]", align: "left" as const },
-        { label: "Solutions", groups: solutionGroups, maxWidth: "max-w-[520px]", columns: 2, align: "left" as const },
-        { label: "Enterprise", href: "#" },
+        { label: "Products", groups: productGroups, maxWidth: "max-width-[640px]", columns: 2, align: "left" as const },
+        { label: "Solutions", groups: solutionGroups, maxWidth: "max-w-[640px]", columns: 2, align: "left" as const },
+        { label: "Resources", groups: resourceGroups, maxWidth: "max-w-[550px]", columns: 2, align: "left" as const },
         { label: "Pricing", href: "#" },
     ];
 
@@ -101,20 +111,9 @@ export function Header() {
                 </Link>
             }
             links={navLinks}
+            utilityBar={<UtilityBar />}
             rightContent={
                 <>
-                    <Link
-                        href="/contact"
-                        className="text-[14px] font-semibold text-slate-600 hover:text-[#6226FA] hidden sm:block transition-all duration-300 tracking-tight"
-                    >
-                        Contact
-                    </Link>
-                    <Link
-                        href="#"
-                        className="text-[14px] font-semibold text-slate-600 hover:text-[#6226FA] hidden sm:block transition-all duration-300 tracking-tight"
-                    >
-                        Login
-                    </Link>
                     <PremiumButton
                         size="sm"
                         className="h-[36px] px-5 text-[13px] font-bold bg-gradient-to-br from-[#6226FA] to-[#5018D9] hover:from-[#7D4DFF] hover:to-[#6226FA] text-white rounded-full shadow-[0_4px_14px_rgba(98,38,250,0.25)] hover:shadow-[0_6px_20px_rgba(98,38,250,0.35)] transition-all duration-300 transform hover:-translate-y-0.5"

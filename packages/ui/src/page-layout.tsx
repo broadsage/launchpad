@@ -1,64 +1,61 @@
 import React from "react";
-import { Header } from "./header";
+import { Header, UtilityBar } from "./header";
 import { Footer } from "./footer";
 import { cn } from "./utils";
 
-interface PageLayoutProps {
+export interface PageLayoutProps {
     children: React.ReactNode;
     showHeader?: boolean;
     showFooter?: boolean;
     className?: string;
+    themeColor?: string; // Optional hex or rgba color for the theme
 }
 
-/**
- * PageLayout - Reusable blueprint grid layout wrapper
- * 
- * This component provides the consistent "floating blueprint" design across all pages:
- * - 1280px centered white column with vertical borders
- * - Docker-inspired #F9FAFB background
- * - Blueprint grid pattern
- * - Automatic Header/Footer integration
- * 
- * Usage:
- * ```tsx
- * <PageLayout>
- *   <YourPageContent />
- * </PageLayout>
- * ```
- */
 export function PageLayout({
     children,
     showHeader = true,
     showFooter = true,
-    className = ""
+    className = "",
+    themeColor = "98,38,250" // Default Broadsage Purple
 }: PageLayoutProps) {
     return (
-        <div className="min-h-screen bg-gradient-to-br from-slate-50 via-gray-50 to-slate-100 selection:bg-[#6226FA] selection:text-white font-sans text-[#0D161C] overflow-x-hidden relative">
-            {/* Ambient background effects */}
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(98,38,250,0.03)_0%,transparent_50%)] pointer-events-none" />
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom_left,rgba(98,38,250,0.02)_0%,transparent_50%)] pointer-events-none" />
+        <div
+            className="min-h-screen bg-gradient-to-br from-slate-50 via-gray-50 to-slate-100 font-sans text-[#0D161C] overflow-x-hidden relative"
+        >
+            <style dangerouslySetInnerHTML={{
+                __html: `
+                ::selection {
+                    background-color: rgb(${themeColor}) !important;
+                    color: white !important;
+                }
+            ` }} />
+            {/* Ambient background effects - uses dynamic themeColor */}
+            <div
+                className="absolute inset-0 pointer-events-none"
+                style={{ background: `radial-gradient(circle_at_top_right, rgba(${themeColor}, 0.05) 0%, transparent 50%)` }}
+            />
+            <div
+                className="absolute inset-0 pointer-events-none"
+                style={{ background: `radial-gradient(circle_at_bottom_left, rgba(${themeColor}, 0.03) 0%, transparent 50%)` }}
+            />
 
-            {/* Fixed Header - Outside Container */}
+            {/* Fixed Main Header group */}
             {showHeader && <Header />}
 
-            <div className={`max-w-7xl mx-auto bg-white/95 backdrop-blur-sm border-x border-gray-200/60 relative shadow-[0_0_60px_-15px_rgba(0,0,0,0.1)] before:absolute before:inset-0 before:bg-gradient-to-b before:from-white/50 before:to-transparent before:pointer-events-none ${showHeader ? "pt-16" : ""}`}>
+            <div className={`max-w-7xl mx-auto bg-white border-x border-gray-200/60 relative shadow-[0_0_60px_-15px_rgba(0,0,0,0.1)] overflow-hidden before:absolute before:inset-0 before:bg-gradient-to-b before:from-white/50 before:to-transparent before:pointer-events-none ${showHeader ? "pt-[104px]" : ""}`}>
                 {/* Persistent Blueprint Grid Background */}
                 <div className="absolute inset-0 blueprint-grid pointer-events-none opacity-30 z-0" />
 
-                {/* Section Divider after header space */}
-                {showHeader && <SectionDivider />}
-
-                {/* Page Content */}
+                {/* Main Page Content Area */}
                 <div className={`relative z-10 ${className}`}>
                     {children}
                 </div>
 
                 {/* Optional Footer */}
                 {showFooter && (
-                    <>
-                        <SectionDivider />
+                    <div className="relative z-20">
                         <Footer />
-                    </>
+                    </div>
                 )}
             </div>
         </div>

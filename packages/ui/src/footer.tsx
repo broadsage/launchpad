@@ -36,59 +36,64 @@ export function Footer() {
     // Footer navigation data - centralized for easy maintenance
     const footerSections = [
         {
-            title: "Platform",
+            title: "Products",
             links: [
-                { label: "Features", href: "#" },
-                { label: "Security", href: "#" },
-                { label: "Enterprise", href: "#" },
-                { label: "Pricing", href: "#" },
+                { label: "Hardened OS", href: "/products/broadsage-hardened-os" },
+                { label: "Hardened Containers", href: "/products/broadsage-hardened-containers" },
+                { label: "Hardened VMs", href: "/products/broadsage-hardened-vms" },
+                { label: "Infrastructure Hub", href: "#" },
             ],
         },
         {
-            title: "Ecosystem",
+            title: "Features",
             links: [
-                { label: "Developer API", href: "#" },
-                { label: "Partners", href: "#" },
-                { label: "CLI", href: "#" },
-                { label: "Marketplace", href: "#" },
+                { label: "Security & Compliance", href: "#" },
+                { label: "Performance Ops", href: "#" },
+                { label: "Supply Chain", href: "#" },
+                { label: "Orchestration", href: "#" },
             ],
         },
         {
-            title: "Support",
+            title: "Developers",
             links: [
-                { label: "Docs", href: "/docs" },
-                { label: "Community", href: "#" },
-                { label: "Status", href: "#" },
-                { label: "Contact", href: "/contact" },
+                { label: "Documentation", href: "/docs" },
+                { label: "API Reference", href: "#" },
+                { label: "Technical Guides", href: "#" },
+                { label: "System Status", href: "#" },
             ],
         },
         {
             title: "Company",
             links: [
-                { label: "About", href: "/about" },
-                { label: "Blog", href: "#" },
-                { label: "Careers", href: "#" },
-                { label: "Shop", href: "#" },
+                { label: "About Broadsage", href: "/about" },
+                { label: "Vision", href: "/about" },
+                { label: "Support", href: "/support" },
+                { label: "Contact Sales", href: "/contact" },
             ],
         },
     ];
 
     const legalLinks = [
-        { label: "Terms", href: "#" },
-        { label: "Privacy", href: "#" },
+        { label: "Terms", href: "/terms" },
+        { label: "Privacy", href: "/privacy" },
+        { label: "Support Terms", href: "/support" },
         { label: "Sitemap", href: "#" },
         { label: "Status", href: "#" },
     ];
 
     return (
-        <footer className="bg-gradient-to-br from-slate-900 via-slate-900 to-purple-950 relative overflow-hidden">
+        <footer className="bg-[#0b1117] relative overflow-hidden rounded-t-[60px] border-t border-white/[0.03] shadow-[0_-30px_60px_-15px_rgba(0,0,0,0.5)]">
+            {/* Top-edge ambient highlight for the curve */}
+            <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-purple-500/30 to-transparent z-20" />
+
             {/* Ambient purple glow effects */}
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(98,38,250,0.08)_0%,transparent_50%)] pointer-events-none" />
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom_right,rgba(98,38,250,0.06)_0%,transparent_50%)] pointer-events-none" />
+            <div className="absolute inset-0 blueprint-grid opacity-[0.03] pointer-events-none" />
 
             {/* Main Footer Content */}
             <Container size="xl">
-                <div className="py-8 lg:py-10 relative z-10">
+                <div className="pt-10 pb-8 lg:pt-14 lg:pb-10 relative z-10">
                     <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-10">
                         {/* Left Section: Logo + Newsletter */}
                         <div className="lg:col-span-4 space-y-4">
@@ -135,7 +140,7 @@ export function Footer() {
             {/* Bottom Bar */}
             <div className="border-t border-white/10 bg-black/30 backdrop-blur-sm relative z-10">
                 <Container size="xl">
-                    <div className="py-5">
+                    <div className="py-4">
                         <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
                             {/* Copyright + Legal Links */}
                             <div className="flex flex-wrap items-center gap-x-6 gap-y-3 text-[11px] font-medium text-slate-400 uppercase tracking-wider">
